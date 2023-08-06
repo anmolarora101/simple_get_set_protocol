@@ -69,10 +69,16 @@ uint8_t create_msg() {
         return (0);
     }
 }
-
+// SOF =1
+//followed by OPCODE 1 or 0 SET o GET
+//followed by 2 bit type, 01 in case of CHAR
+//Followed by 3 bit for length field, 001 in case of char
+//followed by 8 bit of data in case of CHAR (8*length)
+//checksum implementation is pending
+// Data length is calculated on the basis of type of data
 //t stands for true , its binary is 01110100   (LED STATUs ON)
 //f stands for false, its binay is 01100110     (LED STATUs OFF)
-// typ is 01 fo char
+// typ is 01 for char
 //3 bits reserved for length (maximum 7 byte of data) here we are ssending 1 CHAR=1 byte=8bits So len field is 001
 // Temporarily silence the linker. The protocol files are supposed to get integrated with app file
 
